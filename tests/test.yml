@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: yes
+  tasks:
+
+  - include_role:
+      name: ../../
+    vars:
+      input_role_ansible_host:              "router.rachuna-net.pl"
+
+  - name: Test set identity
+    failed_when: "'name: router.rachuna-net.pl' not in set_identity_status.stdout"
+    routeros_command:
+      commands:
+        - /system identity print
+    register: set_identity_status
