@@ -1,2 +1,1 @@
----
-# defaults file for .
+input_role_ansible_host:     "{{ ansible_host }}"
